@@ -1,6 +1,7 @@
 {
   "version": "0.1.0",
   "main": "lib/index.js",
+  "type": "module",
   "scripts": {
     "asbuild:debug": "asc assembly/index.ts --target debug --enable threads --config asconfig.json",
     "asbuild:release": "asc assembly/index.ts --target release --config asconfig.json",
@@ -10,7 +11,7 @@
     "prettier:assemblyscript": "prettier --write ./assembly/**/*.ts",
     "prettier:ts": "prettier --write ./src.ts/**/*.ts",
     "prettier": "npm-run-all prettier:assemblyscript",
-    "test": "ts-mocha --timeout 0 ./tests/**.spec.ts",
+    "test": "vitest",
     "test:view": "ts-mocha --timeout 0 ./tests/view.spec.ts",
     "test:release": "ts-mocha --timeout 0 ./tests/release.spec.ts"
   },
@@ -24,9 +25,11 @@
     "as-bignum": "^0.3.0",
     "assemblyscript": "^0.27.22",
     "assemblyscript-prettier": "^3.0.1",
+    "bitcoinjs-lib": "^6.1.6",
     "chai": "^5.1.0",
     "fs-extra": "^11.2.0",
     "js-sha3": "^0.9.3",
+    "leb128": "^0.0.5",
     "metashrew-as": "https://github.com/sandshrewmetaprotocols/metashrew-as",
     "metashrew-runes": "https://github.com/sandshrewmetaprotocols/metashrew-runes",
     "metashrew-spendables": "https://github.com/sandshrewmetaprotocols/metashrew-spendables",
@@ -41,7 +44,10 @@
     "ts-mocha": "^10.0.0",
     "typescript": "^5.3.3"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "ts-node": "^10.9.2",
+    "vitest": "^2.0.5"
+  },
   "name": "quorumgenesisprotorune",
   "description": "Governance subprotocol definitions"
 }
