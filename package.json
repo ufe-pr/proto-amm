@@ -3,6 +3,7 @@
   "main": "lib/index.js",
   "type": "module",
   "scripts": {
+    "asbuild:watch": "onchange -i 'assembly/**/*' -- npm run asbuild:debug",
     "asbuild:debug": "asc assembly/index.ts --target debug --enable threads --config asconfig.json",
     "asbuild:release": "asc assembly/index.ts --target release --config asconfig.json",
     "build": "npm-run-all asbuild:debug asbuild:release",
@@ -45,6 +46,7 @@
     "typescript": "^5.3.3"
   },
   "devDependencies": {
+    "onchange": "^7.1.0",
     "ts-node": "^10.9.2",
     "vitest": "^2.0.5"
   },

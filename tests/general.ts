@@ -15,6 +15,10 @@ function findRootDir(currentDir: string): string {
   }
 }
 
+// Necessary for vitest to watch for changes in the program
+import.meta.glob("../build/**/*.wasm");
+
 export const DEBUG_WASM = fs.readFileSync(
   path.join(findRootDir(__dirname), "build", "debug.wasm"),
 );
+

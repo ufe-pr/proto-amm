@@ -4,6 +4,13 @@ import { RuneId } from "metashrew-runes/assembly/indexer/RuneId";
 import { POOLS } from "../tables";
 import { BalanceSheet } from "metashrew-runes/assembly/indexer/BalanceSheet";
 import { Swap } from "./Swap";
+import { ProtoruneRuneId } from "protorune/assembly/indexer/ProtoruneRuneId";
+
+import { console } from "metashrew-as/assembly/utils";
+import {
+  fromArrayBuffer,
+  nameToArrayBuffer,
+} from "metashrew-runes/assembly/utils";
 
 export class Pool {
   public rune1: RuneId;
@@ -24,9 +31,14 @@ export class Pool {
     );
   }
 
-  poolId(): RuneId {
-    // TODO: Calculate hash of both rune IDs and make rune id from that
-    return changetype<RuneId>(0);
+  poolId(): ProtoruneRuneId {
+    return ProtoruneRuneId.encode([
+      fromArrayBuffer(nameToArrayBuffer("AMMLP")),
+      this.rune1.block,
+      this.rune1.tx,
+      this.rune2.block,
+      this.rune2.tx,
+    ]);
   }
 
   serialize(): ArrayBuffer {
@@ -46,7 +58,6 @@ export class Pool {
       POOLS.append(id);
     }
   }
-
 
   // Constant product
   static calculateOutput(
