@@ -62,8 +62,6 @@ import { expectBalances } from "protorune/tests/utils/matchers";
 //   }
 // }
 
-
-
 const TEST_PROTOCOL_TAG = BigInt("20000024");
 const addHexPrefix = (s) => (s.substr(0, 2) === "0x" ? s : "0x" + s);
 
@@ -71,39 +69,29 @@ const toHex = (v) => addHexPrefix(v.toString("hex"));
 const concat = (...args: any[]) => toHex(Buffer.concat(args));
 
 // const u32 = (v: number): string => {
-  //   const result = Buffer.allocUnsafe(4);
-  //   result.writeUint32LE(0, v);
-  //   return toHex(result);
-  // };
-  
-  describe("QUORUM•GENESIS•PROTORUNE", () => {
-    let program: IndexerProgram;
-    const expectRunesBalances = (address: string, index: number) =>
-    expectBalances(program, address, index, runesbyaddress);
-    const expectProtoRunesBalances = (
-    address: string,
-    index: number,
-    protocol: any,
-    ) => expectBalances(program, address, index, protorunesbyaddress, protocol);
+//   const result = Buffer.allocUnsafe(4);
+//   result.writeUint32LE(0, v);
+//   return toHex(result);
+// };
 
-    beforeAll(async () => {
-      program = buildProgram(DEBUG_WASM);
-    });
-    
-    beforeEach(async () => {
-      program.setBlockHeight(840000);
-    });
+describe("QUORUM•GENESIS•PROTORUNE", () => {
+  let program: IndexerProgram;
+  const expectRunesBalances = (address: string, index: number) =>
+    expectBalances(program, address, index, runesbyaddress);
+  const expectProtoRunesBalances = (address: string, index: number, protocol: any) =>
+    expectBalances(program, address, index, protorunesbyaddress, protocol);
+
+  beforeAll(async () => {
+    program = buildProgram(DEBUG_WASM);
+  });
+
+  beforeEach(async () => {
+    program.setBlockHeight(840000);
+  });
 
   it("should send message with protorunes", async () => {
-    let {
-      runeId1,
-      runeId2,
-      output,
-      block,
-      refundOutput,
-      premineAmount,
-      pointerToReceiveRunes,
-    } = await createMultipleProtoruneFixture(TEST_PROTOCOL_TAG, false, 210000000n);
+    let { runeId1, runeId2, output, block, refundOutput, premineAmount, pointerToReceiveRunes } =
+      await createMultipleProtoruneFixture(TEST_PROTOCOL_TAG, false, 210000000n);
     const calldata = Buffer.from("mint");
     block = constructProtostoneTx(
       [
@@ -133,7 +121,7 @@ const concat = (...args: any[]) => toHex(Buffer.concat(args));
         ProtoStone.message({
           protocolTag: TEST_PROTOCOL_TAG,
           pointer: 2,
-          refundPointer: 2,
+          refundPointer: 1,
           calldata,
         }),
       ],
@@ -155,8 +143,9 @@ const concat = (...args: any[]) => toHex(Buffer.concat(args));
     expect(runtimeStats.balances.length).to.equal(2);
     expect(runtimeStats.balances[0].balance).to.equal(premineAmount);
     expect(runtimeStats.balances[1].balance).to.equal(premineAmount);
-    console.log(await protorunesbyaddress(program, TEST_BTC_ADDRESS1, TEST_PROTOCOL_TAG));
-    console.log(await protorunesbyaddress(program, TEST_BTC_ADDRESS2, TEST_PROTOCOL_TAG));
+    const addr1ptrns = await protorunesbyaddress(program, TEST_BTC_ADDRESS1, TEST_PROTOCOL_TAG);
+    const addr2ptrns = await protorunesbyaddress(program, TEST_BTC_ADDRESS2, TEST_PROTOCOL_TAG);
+    expect(addr2ptrns.balanceSheet.length).to.equal(3); // Third item is the pool specific protorune
   });
 
   it.skip("should test depositAll", async () => {
@@ -169,16 +158,8 @@ const concat = (...args: any[]) => toHex(Buffer.concat(args));
     await program.run("_start"); // calls depositAll
     await expectRunesBalances(TEST_BTC_ADDRESS1, 1).isZero();
     await expectRunesBalances(TEST_BTC_ADDRESS2, 2).isZero();
-    await expectProtoRunesBalances(
-      TEST_BTC_ADDRESS2,
-      2,
-      TEST_PROTOCOL_TAG,
-    ).isZero();
-    await expectProtoRunesBalances(
-      TEST_BTC_ADDRESS1,
-      1,
-      TEST_PROTOCOL_TAG,
-    ).isZero();
+    await expectProtoRunesBalances(TEST_BTC_ADDRESS2, 2, TEST_PROTOCOL_TAG).isZero();
+    await expectProtoRunesBalances(TEST_BTC_ADDRESS1, 1, TEST_PROTOCOL_TAG).isZero();
     const runtimeStats = await runtime(program, TEST_PROTOCOL_TAG, {
       height: Number(runeId.block),
       txindex: runeId.tx,

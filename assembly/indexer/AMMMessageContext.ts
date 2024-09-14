@@ -3,6 +3,7 @@ import { Pool } from "./Pool";
 import { POOLS } from "../tables";
 import { u128 } from "as-bignum/assembly/integer/u128";
 import { console } from "metashrew-as/assembly/utils";
+import { ProtoruneBalanceSheet } from "protorune/assembly/indexer/ProtoruneBalanceSheet";
 
 export class AMMMessageContext extends MessageContext {
   @inline
@@ -45,30 +46,56 @@ export class AMMMessageContext extends MessageContext {
       }
       console.log("Creating pool ID...");
 
-      const one = new u128(
-        this.runes[0].runeId.tx.toU64(),
-        this.runes[0].runeId.block.toU64()
-      );
-      const two = new u128(
-        this.runes[1].runeId.tx.toU64(),
-        this.runes[1].runeId.block.toU64()
-      );
+      const one = new u128(this.runes[0].runeId.tx.toU64(), this.runes[0].runeId.block.toU64());
+      const two = new u128(this.runes[1].runeId.tx.toU64(), this.runes[1].runeId.block.toU64());
 
       const toComeFirst = one <= two ? 0 : 1;
       const pool = new Pool(
         this.runes[toComeFirst].runeId,
         this.runes[toComeFirst === 0 ? 1 : 0].runeId
       );
-      if (!this.runes[0].depositAll() || !this.runes[1].depositAll())
-        return false;
-      const index = this.refund_pointer.index;
-      console.log("Index: " + index.toString());
-      const out = this.sheets.get(index);
+      if (!this.runes[0].depositAll() || !this.runes[1].depositAll()) return false;
 
-      console.log(out.inspect());
-      out.set(pool.poolId().toBytes(), u128.from(1));
-      out.save(this.table.OUTPOINT_TO_RUNES);
       // TODO: Mint Liquidity tokens
+      const index = this.refund_pointer.index;
+      // console.log("Index: " + index.toString());
+      const poolIdBytes = pool.poolId().toBytes();
+      // const poolIdBytes = this.runes[0].runeId.toBytes();
+      // this.sheets.get(index).increase(poolIdBytes, u128.from(1));
+
+      const checkingSheet = ProtoruneBalanceSheet.loadFromAtomicTx(
+        this.table.OUTPOINT_TO_RUNES.select(this.refund_pointer.toArrayBuffer()),
+        this.runtime
+      );
+      // console.log(checkingSheet.inspect());
+      // console.log(
+      //   ProtoruneBalanceSheet.loadFromAtomicTx(
+      //     this.table.OUTPOINT_TO_RUNES.select(this.refund_pointer.toArrayBuffer()),
+      //     this.runtime
+      //   ).inspect()
+      // );
+      checkingSheet.set(poolIdBytes, u128.from(1000));
+      // console.log(checkingSheet.inspect());
+      this.baseSheet.set(poolIdBytes, u128.from(1000));
+      // checkingSheet.save(this.table.OUTPOINT_TO_RUNES.select(this.refund_pointer.toArrayBuffer()));
+      checkingSheet.saveToAtomicTx(
+        this.table.OUTPOINT_TO_RUNES.select(this.refund_pointer.toArrayBuffer()),
+        this.runtime
+      );
+      // console.log("refund (indexed - " + this.refund_pointer.index.toString() + ")");
+      // console.log(
+      //   ProtoruneBalanceSheet.loadFromAtomicTx(
+      //     this.table.OUTPOINT_TO_RUNES.select(this.refund_pointer.toArrayBuffer()),
+      //     this.runtime
+      //   ).inspect()
+      // );
+      // console.log("pointer (indexed - " + this.pointer.index.toString() + ")");
+      // console.log(
+      //   ProtoruneBalanceSheet.loadFromAtomicTx(
+      //     this.table.OUTPOINT_TO_RUNES.select(this.pointer.toArrayBuffer()),
+      //     this.runtime
+      //   ).inspect()
+      // );
     } else if (decodedCalldata === "burn") {
       console.log("Burning liquidity...");
       // Ensure that only the liquidity rune is sent

@@ -153,9 +153,6 @@
  (global $~lib/protorune/assembly/indexer/fields/ProtoruneField/ProtoruneField.NOP (mut i64) (i64.const 127))
  (global $~lib/protorune/assembly/constants/PROTOCOL_FIELD i64 (i64.const 16383))
  (global $~lib/protorune/assembly/indexer/ProtoruneRuneId/ProtoruneRuneId.MAX_LEB_SIZE_BYTES i32 (i32.const 31))
- (global $assembly/indexer/fields/AMMField/AMMField.MINT (mut i64) (i64.const 95))
- (global $assembly/indexer/fields/AMMField/AMMField.BURN (mut i64) (i64.const 97))
- (global $assembly/indexer/fields/AMMField/AMMField.SWAP (mut i64) (i64.const 99))
  (global $assembly/tables/PROPOSALS (mut i32) (i32.const 0))
  (global $assembly/tables/RUNE_TO_OUTPOINT (mut i32) (i32.const 0))
  (global $assembly/tables/OUTPOINT_TO_RUNE_RANGES (mut i32) (i32.const 0))
@@ -174,8 +171,8 @@
  (global $~lib/number/U16.MAX_VALUE i32 (i32.const 65535))
  (global $~lib/builtins/u8.MAX_VALUE i32 (i32.const 255))
  (global $~lib/number/U8.MAX_VALUE i32 (i32.const 255))
- (global $~lib/rt/__rtti_base i32 (i32.const 11936))
- (global $~lib/memory/__heap_base i32 (i32.const 12544))
+ (global $~lib/rt/__rtti_base i32 (i32.const 11664))
+ (global $~lib/memory/__heap_base i32 (i32.const 12272))
  (memory $0 1)
  (data $0 (i32.const 12) "\1c\02\00\00\00\00\00\00\00\00\00\00\04\00\00\00\00\02\00\00000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f606162636465666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e7f808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9fa0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebfc0c1c2c3c4c5c6c7c8c9cacbcccdcecfd0d1d2d3d4d5d6d7d8d9dadbdcdddedfe0e1e2e3e4e5e6e7e8e9eaebecedeeeff0f1f2f3f4f5f6f7f8f9fafbfcfdfeff\00\00\00\00\00\00\00\00\00\00\00\00")
  (data $1 (i32.const 556) "<\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00(\00\00\00A\00l\00l\00o\00c\00a\00t\00i\00o\00n\00 \00t\00o\00o\00 \00l\00a\00r\00g\00e\00\00\00\00\00")
@@ -320,27 +317,20 @@
  (data $140 (i32.const 10972) "\1c\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\08\00\00\00m\00i\00n\00t\00\00\00\00\00")
  (data $141 (i32.const 11004) "<\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00(\00\00\00M\00i\00n\00t\00i\00n\00g\00 \00l\00i\00q\00u\00i\00d\00i\00t\00y\00.\00.\00.\00\00\00\00\00")
  (data $142 (i32.const 11068) "<\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00&\00\00\00C\00r\00e\00a\00t\00i\00n\00g\00 \00p\00o\00o\00l\00 \00I\00D\00.\00.\00.\00\00\00\00\00\00\00")
- (data $143 (i32.const 11132) ",\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\0e\00\00\00I\00n\00d\00e\00x\00:\00 \00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data $144 (i32.const 11180) ",\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\12\00\00\00r\00u\00n\00e\00s\00:\00 \00[\00\n\00\00\00\00\00\00\00\00\00\00\00")
- (data $145 (i32.const 11228) "\1c\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\04\00\00\00 \00 \00\00\00\00\00\00\00\00\00")
- (data $146 (i32.const 11260) "\1c\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\02\00\00\00\n\00\00\00\00\00\00\00\00\00\00\00")
- (data $147 (i32.const 11292) ",\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\1c\00\00\00]\00\n\00b\00a\00l\00a\00n\00c\00e\00s\00:\00 \00[\00\n\00")
- (data $148 (i32.const 11340) "\1c\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\02\00\00\00]\00\00\00\00\00\00\00\00\00\00\00")
- (data $149 (i32.const 11372) "\1c\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\08\00\00\00A\001\002\003\00\00\00\00\00")
- (data $150 (i32.const 11404) "\1c\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\n\00\00\00A\00M\00M\00L\00P\00\00\00")
- (data $151 (i32.const 11436) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data $152 (i32.const 11468) "\1c\00\00\00\00\00\00\00\00\00\00\00F\00\00\00\08\00\00\00\1c\00\00\00\00\00\00\00\00\00\00\00")
- (data $153 (i32.const 11500) ",\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\12\00\00\00t\00h\00i\00s\00.\00M\00a\00x\00 \00\00\00\00\00\00\00\00\00\00\00")
- (data $154 (i32.const 11548) "\1c\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\0c\00\00\00b\00l\00o\00c\00k\00 \00")
- (data $155 (i32.const 11580) "\1c\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\06\00\00\00t\00x\00 \00\00\00\00\00\00\00")
- (data $156 (i32.const 11612) "\1c\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\08\00\00\00b\00u\00r\00n\00\00\00\00\00")
- (data $157 (i32.const 11644) "<\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00(\00\00\00B\00u\00r\00n\00i\00n\00g\00 \00l\00i\00q\00u\00i\00d\00i\00t\00y\00.\00.\00.\00\00\00\00\00")
- (data $158 (i32.const 11708) "\1c\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\0c\00\00\00/\00r\00u\00n\00e\001\00")
- (data $159 (i32.const 11740) "\1c\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\0c\00\00\00/\00r\00u\00n\00e\002\00")
- (data $160 (i32.const 11772) "\1c\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\08\00\00\00s\00w\00a\00p\00\00\00\00\00")
- (data $161 (i32.const 11804) "<\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00$\00\00\00S\00w\00a\00p\00p\00i\00n\00g\00 \00t\00o\00k\00e\00n\00s\00.\00.\00.\00\00\00\00\00\00\00\00\00")
- (data $162 (i32.const 11868) "<\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\"\00\00\00I\00n\00v\00a\00l\00i\00d\00 \00a\00c\00t\00i\00o\00n\00.\00.\00.\00\00\00\00\00\00\00\00\00\00\00")
- (data $163 (i32.const 11936) "\97\00\00\00 \00\00\00 \00\00\00 \00\00\00\00\00\00\00d\00\00\00 \00\00\00\02\01\00\00\10A\82\00 \00\00\00 \00\00\00 \00\00\00 \00\00\00 \00\00\00B\00\00\00A\00\00\00\00\00\00\00\08A\00\00 \00\00\00\00\00\00\00\00\00\00\00 \00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\02A\00\00\02A\00\00\00\00\00\00\02A\00\00\02A\00\00\02A\00\00 \00\00\00 \00\00\00\00\00\00\00\02A\00\00\02\t\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\01\t\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00 \00\00\00\02A\00\00\00\00\00\00\00\00\00\00\00\00\00\00\02A\00\00\10\t\82\00\10\t\82\00\10A\02\00 \00\00\00 \00\00\00\00\00\00\00\00\00\00\00\10A\04\00\04A\00\00\02A\00\00\00\00\00\00\10A\02\00\02A\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\02A\00\00\02A\00\00\02A\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00 \00\00\00\02A\00\00\02A\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\04A\00\00\00\00\00\00 \00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\02A\00\00\02A\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00 \00\00\00\02A\00\00\00\00\00\00\00\00\00\00\00\00\00\00\02A\00\00 \00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\02A\00\00\02A\00\00 \00\00\00\02A\00\00\00\00\00\00\00\00\00\00\00\00\00\00\02\02\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\02A\00\00\00\00\00\00\02A\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00P\00\02\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data $143 (i32.const 11132) "\1c\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\n\00\00\00A\00M\00M\00L\00P\00\00\00")
+ (data $144 (i32.const 11164) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data $145 (i32.const 11196) "\1c\00\00\00\00\00\00\00\00\00\00\00F\00\00\00\08\00\00\00\1c\00\00\00\00\00\00\00\00\00\00\00")
+ (data $146 (i32.const 11228) ",\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\12\00\00\00t\00h\00i\00s\00.\00M\00a\00x\00 \00\00\00\00\00\00\00\00\00\00\00")
+ (data $147 (i32.const 11276) "\1c\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\0c\00\00\00b\00l\00o\00c\00k\00 \00")
+ (data $148 (i32.const 11308) "\1c\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\06\00\00\00t\00x\00 \00\00\00\00\00\00\00")
+ (data $149 (i32.const 11340) "\1c\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\08\00\00\00b\00u\00r\00n\00\00\00\00\00")
+ (data $150 (i32.const 11372) "<\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00(\00\00\00B\00u\00r\00n\00i\00n\00g\00 \00l\00i\00q\00u\00i\00d\00i\00t\00y\00.\00.\00.\00\00\00\00\00")
+ (data $151 (i32.const 11436) "\1c\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\0c\00\00\00/\00r\00u\00n\00e\001\00")
+ (data $152 (i32.const 11468) "\1c\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\0c\00\00\00/\00r\00u\00n\00e\002\00")
+ (data $153 (i32.const 11500) "\1c\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\08\00\00\00s\00w\00a\00p\00\00\00\00\00")
+ (data $154 (i32.const 11532) "<\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00$\00\00\00S\00w\00a\00p\00p\00i\00n\00g\00 \00t\00o\00k\00e\00n\00s\00.\00.\00.\00\00\00\00\00\00\00\00\00")
+ (data $155 (i32.const 11596) "<\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\"\00\00\00I\00n\00v\00a\00l\00i\00d\00 \00a\00c\00t\00i\00o\00n\00.\00.\00.\00\00\00\00\00\00\00\00\00\00\00")
+ (data $156 (i32.const 11664) "\97\00\00\00 \00\00\00 \00\00\00 \00\00\00\00\00\00\00d\00\00\00 \00\00\00\02\01\00\00\10A\82\00 \00\00\00 \00\00\00 \00\00\00 \00\00\00 \00\00\00B\00\00\00A\00\00\00\00\00\00\00\08A\00\00 \00\00\00\00\00\00\00\00\00\00\00 \00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\02A\00\00\02A\00\00\00\00\00\00\02A\00\00\02A\00\00\02A\00\00 \00\00\00 \00\00\00\00\00\00\00\02A\00\00\02\t\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\01\t\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00 \00\00\00\02A\00\00\00\00\00\00\00\00\00\00\00\00\00\00\02A\00\00\10\t\82\00\10\t\82\00\10A\02\00 \00\00\00 \00\00\00\00\00\00\00\00\00\00\00\10A\04\00\04A\00\00\02A\00\00\00\00\00\00\10A\02\00\02A\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\02A\00\00\02A\00\00\02A\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00 \00\00\00\02A\00\00\02A\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\04A\00\00\00\00\00\00 \00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\02A\00\00\02A\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00 \00\00\00\02A\00\00\00\00\00\00\00\00\00\00\00\00\00\00\02A\00\00 \00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\02A\00\00\02A\00\00 \00\00\00\02A\00\00\00\00\00\00\00\00\00\00\00\00\00\00\02\02\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\02A\00\00\00\00\00\00\02A\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00P\00\02\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
  (table $0 29 29 funcref)
  (elem $0 (i32.const 1) $~lib/metashrew-as/assembly/utils/utils/concat~anonymous|0 $~lib/metashrew-as/assembly/utils/box/Box.concat~anonymous|0 $~lib/metashrew-as/assembly/utils/box/Box.concat~anonymous|1 $~lib/metashrew-runes/assembly/indexer/RunesTransaction/RunesTransaction#runestone~anonymous|0 $~lib/metashrew-runes/assembly/indexer/RunestoneMessage/RunestoneMessage#loadBalanceSheet~anonymous|0 $~lib/metashrew-runes/assembly/indexer/BalanceSheet/BalanceSheet.concat~anonymous|0 $~lib/metashrew-runes/assembly/utils/fieldToArrayBuffer~anonymous|0 $~lib/metashrew-as/assembly/indexer/index/_flush~anonymous|0 $~lib/metashrew-runes/assembly/indexer/RuneId/RuneId.fromBytes~anonymous|0 $~lib/protorune/assembly/view/outpoint/balanceSheetToProtobuf~anonymous|0~anonymous|0 $~lib/protorune/assembly/view/outpoint/balanceSheetToProtobuf~anonymous|0 $~lib/protorune/assembly/view/outpoint/balanceSheetToProtobuf~anonymous|1 $~lib/protorune/assembly/view/outpoint/balanceSheetToProtobufForProtocol~anonymous|0 $~lib/protorune/assembly/view/outpoint/balanceSheetToProtobufForProtocol~anonymous|1 $~lib/protorune/assembly/view/runes/runes~anonymous|0~anonymous|0 $~lib/protorune/assembly/view/runes/runes~anonymous|0 $~lib/protorune/assembly/view/wallet/runesbyaddress~anonymous|0 $~lib/protorune/assembly/view/wallet/protorunesbyaddress~anonymous|0 $assembly/indexer/numbering/NumberingMixin/pointsFromKeys~anonymous|0~anonymous|0 $assembly/indexer/numbering/NumberingMixin/pointsFromKeys~anonymous|0 $assembly/view/runerange~anonymous|0 $~lib/protorune/assembly/utils/concatByteArray15BytesPerU128~anonymous|0 $~lib/protorune/assembly/indexer/Protostone/ProtostoneTable#burns~anonymous|0 $~lib/protorune/assembly/indexer/Protoburn/Protoburn#constructor~anonymous|0 $~lib/protorune/assembly/indexer/Protostone/ProtostoneTable#burns~anonymous|1 $~lib/protorune/assembly/indexer/Protostone/Protostone#loadBalanceSheet~anonymous|0 $assembly/indexer/AMMMessageContext/AMMMessageContext#handle~anonymous|0 $~lib/protorune/assembly/indexer/ProtoruneRuneId/ProtoruneRuneId.encode~anonymous|0)
  (export "_start" (func $assembly/index/_start))
@@ -46743,81 +46733,6 @@
   call $~lib/protorune/assembly/indexer/protomessage/IncomingRune/IncomingRune#deposit
   return
  )
- (func $~lib/metashrew-runes/assembly/indexer/BalanceSheet/BalanceSheet#inspect (param $this i32) (result i32)
-  (local $base i32)
-  (local $i i32)
-  (local $i|3 i32)
-  i32.const 11200
-  local.set $base
-  i32.const 0
-  local.set $i
-  loop $for-loop|0
-   local.get $i
-   local.get $this
-   call $~lib/metashrew-runes/assembly/indexer/BalanceSheet/BalanceSheet#get:runes
-   call $~lib/array/Array<~lib/arraybuffer/ArrayBuffer>#get:length
-   i32.lt_s
-   if
-    local.get $base
-    i32.const 11248
-    local.get $this
-    call $~lib/metashrew-runes/assembly/indexer/BalanceSheet/BalanceSheet#get:runes
-    local.get $i
-    call $~lib/array/Array<~lib/arraybuffer/ArrayBuffer>#__get
-    call $~lib/metashrew-runes/assembly/indexer/RuneId/RuneId.fromBytes
-    call $~lib/metashrew-runes/assembly/indexer/RuneId/RuneId#inspect
-    call $~lib/string/String.__concat
-    i32.const 11280
-    call $~lib/string/String.__concat
-    call $~lib/string/String.__concat
-    local.set $base
-    local.get $i
-    i32.const 1
-    i32.add
-    local.set $i
-    br $for-loop|0
-   end
-  end
-  local.get $base
-  i32.const 11312
-  call $~lib/string/String.__concat
-  local.set $base
-  i32.const 0
-  local.set $i|3
-  loop $for-loop|1
-   local.get $i|3
-   local.get $this
-   call $~lib/metashrew-runes/assembly/indexer/BalanceSheet/BalanceSheet#get:balances
-   call $~lib/array/Array<~lib/as-bignum/assembly/integer/u128/u128>#get:length
-   i32.lt_s
-   if
-    local.get $base
-    i32.const 11248
-    local.get $this
-    call $~lib/metashrew-runes/assembly/indexer/BalanceSheet/BalanceSheet#get:balances
-    local.get $i|3
-    call $~lib/array/Array<~lib/as-bignum/assembly/integer/u128/u128>#__get
-    i32.const 10
-    call $~lib/as-bignum/assembly/integer/u128/u128#toString
-    call $~lib/string/String.__concat
-    i32.const 11280
-    call $~lib/string/String.__concat
-    call $~lib/string/String.__concat
-    local.set $base
-    local.get $i|3
-    i32.const 1
-    i32.add
-    local.set $i|3
-    br $for-loop|1
-   end
-  end
-  local.get $base
-  i32.const 11360
-  call $~lib/string/String.__concat
-  local.set $base
-  local.get $base
-  return
- )
  (func $assembly/indexer/Pool/Pool#get:rune1 (param $this i32) (result i32)
   local.get $this
   i32.load
@@ -46861,7 +46776,7 @@
   i32.const 0
   i32.const 0
   i32.const 13
-  i32.const 11456
+  i32.const 11184
   call $~lib/rt/__newArray
   local.set $result
   local.get $data
@@ -47130,7 +47045,7 @@
   (local $array|15 i32)
   (local $buffer|16 i32)
   local.get $ary
-  i32.const 11488
+  i32.const 11216
   call $~lib/array/Array<~lib/as-bignum/assembly/integer/u128/u128>#map<~lib/metashrew-as/assembly/utils/box/Box>
   call $~lib/metashrew-as/assembly/utils/box/Box.concat
   local.set $data
@@ -47140,7 +47055,7 @@
   call $~lib/protorune/assembly/indexer/ProtoruneRuneId/ProtoruneRuneId#constructor
   local.set $result
   global.get $~lib/metashrew-as/assembly/utils/logging/console
-  i32.const 11520
+  i32.const 11248
   global.get $~lib/protorune/assembly/indexer/ProtoruneRuneId/ProtoruneRuneId.MAX_LEB_SIZE_BYTES
   i32.const 10
   call $~lib/number/U32#toString
@@ -47303,7 +47218,7 @@
   end
   call $~lib/metashrew-runes/assembly/indexer/RuneId/RuneId#set:block
   global.get $~lib/metashrew-as/assembly/utils/logging/console
-  i32.const 11568
+  i32.const 11296
   local.get $result
   call $~lib/metashrew-runes/assembly/indexer/RuneId/RuneId#get:block
   i32.const 10
@@ -47409,7 +47324,7 @@
   end
   call $~lib/metashrew-runes/assembly/indexer/RuneId/RuneId#set:tx
   global.get $~lib/metashrew-as/assembly/utils/logging/console
-  i32.const 11600
+  i32.const 11328
   local.get $result
   call $~lib/metashrew-runes/assembly/indexer/RuneId/RuneId#get:tx
   i32.const 10
@@ -47422,13 +47337,6 @@
  (func $assembly/indexer/Pool/Pool#poolId (param $this i32) (result i32)
   (local $1 i32)
   (local $2 i32)
-  global.get $~lib/metashrew-as/assembly/utils/logging/console
-  i32.const 11392
-  i32.const 8
-  call $~lib/as-bignum/assembly/utils/atou128
-  i32.const 10
-  call $~lib/as-bignum/assembly/integer/u128/u128#toString
-  call $~lib/metashrew-as/assembly/utils/logging/Console#log
   i32.const 5
   i32.const 2
   i32.const 54
@@ -47440,7 +47348,7 @@
   local.set $2
   local.get $1
   i32.const 0
-  i32.const 11424
+  i32.const 11152
   call $~lib/metashrew-runes/assembly/utils/nameToArrayBuffer
   call $~lib/metashrew-runes/assembly/utils/fromArrayBuffer
   call $~lib/array/Array<~lib/as-bignum/assembly/integer/u128/u128>#__set
@@ -47481,7 +47389,7 @@
   call $~lib/metashrew-as/assembly/indexer/tables/IndexPointer#select
   local.set $poolPointer
   local.get $poolPointer
-  i32.const 11728
+  i32.const 11456
   call $~lib/metashrew-as/assembly/indexer/tables/IndexPointer#keyword
   call $~lib/metashrew-as/assembly/indexer/tables/IndexPointer#get
   call $~lib/metashrew-runes/assembly/indexer/RuneId/RuneId.fromBytes
@@ -47496,7 +47404,7 @@
   i32.const 0
   local.get $rune1
   local.get $poolPointer
-  i32.const 11760
+  i32.const 11488
   call $~lib/metashrew-as/assembly/indexer/tables/IndexPointer#keyword
   call $~lib/metashrew-as/assembly/indexer/tables/IndexPointer#get
   call $~lib/metashrew-runes/assembly/indexer/RuneId/RuneId.fromBytes
@@ -47527,11 +47435,14 @@
   (local $toComeFirst i32)
   (local $pool i32)
   (local $index i32)
-  (local $out i32)
+  (local $poolIdBytes i32)
+  (local $checkingSheet i32)
   (local $value i32)
-  (local $value|26 i64)
+  (local $value|27 i64)
+  (local $value|28 i32)
+  (local $value|29 i64)
   (local $runeId i32)
-  (local $pool|28 i32)
+  (local $pool|31 i32)
   global.get $~lib/metashrew-as/assembly/utils/logging/console
   i32.const 10512
   call $~lib/metashrew-as/assembly/utils/logging/Console#log
@@ -47828,28 +47739,26 @@
    call $~lib/protorune/assembly/indexer/protomessage/MessageContext/MessageContext#get:refund_pointer
    call $~lib/metashrew-as/assembly/blockdata/transaction/OutPoint#get:index
    local.set $index
-   global.get $~lib/metashrew-as/assembly/utils/logging/console
-   i32.const 11152
-   local.get $index
-   i32.const 10
-   call $~lib/number/U32#toString
-   call $~lib/string/String.__concat
-   call $~lib/metashrew-as/assembly/utils/logging/Console#log
-   local.get $this
-   call $~lib/protorune/assembly/indexer/protomessage/MessageContext/MessageContext#get:sheets
-   local.get $index
-   call $"~lib/map/Map<u32,~lib/protorune/assembly/indexer/ProtoruneBalanceSheet/ProtoruneBalanceSheet>#get"
-   local.set $out
-   global.get $~lib/metashrew-as/assembly/utils/logging/console
-   local.get $out
-   call $~lib/metashrew-runes/assembly/indexer/BalanceSheet/BalanceSheet#inspect
-   call $~lib/metashrew-as/assembly/utils/logging/Console#log
-   local.get $out
    local.get $pool
    call $assembly/indexer/Pool/Pool#poolId
    call $~lib/metashrew-runes/assembly/indexer/RuneId/RuneId#toBytes
+   local.set $poolIdBytes
+   local.get $this
+   call $~lib/protorune/assembly/indexer/protomessage/MessageContext/MessageContext#get:table
+   call $~lib/protorune/assembly/indexer/tables/protorune/ProtoruneTable#get:OUTPOINT_TO_RUNES
+   local.get $this
+   call $~lib/protorune/assembly/indexer/protomessage/MessageContext/MessageContext#get:refund_pointer
+   call $~lib/metashrew-as/assembly/blockdata/transaction/OutPoint#toArrayBuffer
+   call $~lib/metashrew-as/assembly/indexer/tables/IndexPointer#select
+   local.get $this
+   call $~lib/protorune/assembly/indexer/protomessage/MessageContext/MessageContext#get:runtime
+   i32.const 0
+   call $~lib/protorune/assembly/indexer/ProtoruneBalanceSheet/ProtoruneBalanceSheet.loadFromAtomicTx
+   local.set $checkingSheet
+   local.get $checkingSheet
+   local.get $poolIdBytes
    block $~lib/as-bignum/assembly/integer/u128/u128.from<i32>|inlined.35 (result i32)
-    i32.const 1
+    i32.const 1000
     local.set $value
     i32.const 0
     drop
@@ -47866,10 +47775,10 @@
     block $~lib/as-bignum/assembly/integer/u128/u128.fromI64|inlined.35 (result i32)
      local.get $value
      i64.extend_i32_s
-     local.set $value|26
+     local.set $value|27
      i32.const 0
-     local.get $value|26
-     local.get $value|26
+     local.get $value|27
+     local.get $value|27
      i64.const 63
      i64.shr_s
      call $~lib/as-bignum/assembly/integer/u128/u128#constructor
@@ -47878,19 +47787,57 @@
     br $~lib/as-bignum/assembly/integer/u128/u128.from<i32>|inlined.35
    end
    call $~lib/metashrew-runes/assembly/indexer/BalanceSheet/BalanceSheet#set
-   local.get $out
+   local.get $this
+   call $~lib/protorune/assembly/indexer/protomessage/MessageContext/MessageContext#get:baseSheet
+   local.get $poolIdBytes
+   block $~lib/as-bignum/assembly/integer/u128/u128.from<i32>|inlined.36 (result i32)
+    i32.const 1000
+    local.set $value|28
+    i32.const 0
+    drop
+    i32.const 0
+    drop
+    i32.const 0
+    drop
+    i32.const 0
+    drop
+    i32.const 0
+    drop
+    i32.const 1
+    drop
+    block $~lib/as-bignum/assembly/integer/u128/u128.fromI64|inlined.36 (result i32)
+     local.get $value|28
+     i64.extend_i32_s
+     local.set $value|29
+     i32.const 0
+     local.get $value|29
+     local.get $value|29
+     i64.const 63
+     i64.shr_s
+     call $~lib/as-bignum/assembly/integer/u128/u128#constructor
+     br $~lib/as-bignum/assembly/integer/u128/u128.fromI64|inlined.36
+    end
+    br $~lib/as-bignum/assembly/integer/u128/u128.from<i32>|inlined.36
+   end
+   call $~lib/metashrew-runes/assembly/indexer/BalanceSheet/BalanceSheet#set
+   local.get $checkingSheet
    local.get $this
    call $~lib/protorune/assembly/indexer/protomessage/MessageContext/MessageContext#get:table
    call $~lib/protorune/assembly/indexer/tables/protorune/ProtoruneTable#get:OUTPOINT_TO_RUNES
-   i32.const 0
-   call $~lib/protorune/assembly/indexer/ProtoruneBalanceSheet/ProtoruneBalanceSheet#save
+   local.get $this
+   call $~lib/protorune/assembly/indexer/protomessage/MessageContext/MessageContext#get:refund_pointer
+   call $~lib/metashrew-as/assembly/blockdata/transaction/OutPoint#toArrayBuffer
+   call $~lib/metashrew-as/assembly/indexer/tables/IndexPointer#select
+   local.get $this
+   call $~lib/protorune/assembly/indexer/protomessage/MessageContext/MessageContext#get:runtime
+   call $~lib/protorune/assembly/indexer/ProtoruneBalanceSheet/ProtoruneBalanceSheet#saveToAtomicTx
   else
    local.get $decodedCalldata
-   i32.const 11632
+   i32.const 11360
    call $~lib/string/String.__eq
    if
     global.get $~lib/metashrew-as/assembly/utils/logging/console
-    i32.const 11664
+    i32.const 11392
     call $~lib/metashrew-as/assembly/utils/logging/Console#log
     local.get $this
     call $~lib/protorune/assembly/indexer/protomessage/MessageContext/MessageContext#get:runes
@@ -47910,8 +47857,8 @@
     local.get $runeId
     call $~lib/protorune/assembly/indexer/protomessage/IncomingRune/IncomingRune#get:runeId
     call $assembly/indexer/Pool/Pool.from
-    local.set $pool|28
-    local.get $pool|28
+    local.set $pool|31
+    local.get $pool|31
     call $assembly/indexer/Pool/Pool#poolId
     i32.const 0
     i32.eq
@@ -47921,15 +47868,15 @@
     end
    else
     local.get $decodedCalldata
-    i32.const 11792
+    i32.const 11520
     call $~lib/string/String.__eq
     if
      global.get $~lib/metashrew-as/assembly/utils/logging/console
-     i32.const 11824
+     i32.const 11552
      call $~lib/metashrew-as/assembly/utils/logging/Console#log
     else
      global.get $~lib/metashrew-as/assembly/utils/logging/console
-     i32.const 11888
+     i32.const 11616
      call $~lib/metashrew-as/assembly/utils/logging/Console#log
      i32.const 0
      return

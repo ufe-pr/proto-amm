@@ -49,6 +49,7 @@ export class Pool {
   }
 
   save(ptr: IndexPointer): void {
+    // TODO: Save LP protorune details, name, symbol, divisibility, spacers...
     const id = this.poolId().toBytes();
     const poolPointer = ptr.select(id);
     const exists = poolPointer.keyword("/rune1").get().byteLength !== 0;
