@@ -1,7 +1,3 @@
-import { u128 } from "as-bignum/assembly/integer";
-import { CAP, MINTS_REMAINING, PREMINE, RUNE_ID_TO_ETCHING, AMOUNT } from "metashrew-runes/assembly/indexer/constants";
-import { RuneId } from "metashrew-runes/assembly/indexer/RuneId";
-import { fromArrayBuffer  } from "metashrew-runes/assembly/utils";
 import { console } from "metashrew-as/assembly/utils/logging"
 
 //@ts-ignore
@@ -47,23 +43,6 @@ export function uniq(ary: Array<ArrayBuffer>): Array<ArrayBuffer> {
     },
     new Array<ArrayBuffer>(0),
   );
-}
-
-export function totalSupply(runeId: RuneId): u128 {
-  const runeIdBytes = runeId.toBytes();
-  const name = RUNE_ID_TO_ETCHING.select(runeIdBytes).get();
-
-  let result: u128 = fromArrayBuffer(PREMINE.select(name).get());
-  const cap: u128 = fromArrayBuffer(CAP.select(name).get());
-  if (cap.isZero()) return result;
-  const mintsRemaining: u128 = fromArrayBuffer(
-    MINTS_REMAINING.select(name).get(),
-  );
-  let numMints = cap
-  if(cap !== mintsRemaining) numMints = cap - mintsRemaining
-  //@ts-ignore
-  result += fromArrayBuffer(AMOUNT.select(name).get()) * (numMints);
-  return result;
 }
 
 class Stringifiable {
